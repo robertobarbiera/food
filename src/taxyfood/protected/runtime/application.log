@@ -1,0 +1,8 @@
+2013/12/09 13:16:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii".' in /Applications/MAMP/htdocs/taxyfood/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/taxyfood/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii')
+#1 /Applications/MAMP/htdocs/taxyfood/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/taxyfood/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/taxyfood/index.php?r=gii
+---
