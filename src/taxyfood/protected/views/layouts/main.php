@@ -21,11 +21,10 @@
 <body>
 
 <div class="container" id="page">
-
+	
 	<div id="header">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
-	
 	<div>
 	<?php 
 	$this->widget(
@@ -69,7 +68,8 @@
 	<div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+	   <?php $this->widget('application.components.widgets.LanguageSelector'); ?>
+		
 	</div><!-- footer -->
 
 </div><!-- page -->

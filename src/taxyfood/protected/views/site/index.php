@@ -20,7 +20,5 @@ the <a href="http://www.yiiframework.com/doc/">documentation</a>.
 Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p>
 <div  id="language-selector" style="float:right; margin:5px;">
-    <?php 
-        $this->widget('application.components.widgets.LanguageSelector');
-    ?>
+
 </div>
