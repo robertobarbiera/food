@@ -7,6 +7,63 @@ $this->pageTitle=Yii::app()->name . ' - Contact Us';
 $this->breadcrumbs=array(
 	'Contact',
 );
+
+
+$this->widget(
+		'bootstrap.widgets.TbButton',
+		array(
+				'label' => 'Top popover',
+				'type' => 'primary',
+				'htmlOptions' => array(
+						'data-title' => 'A Title',
+						'data-placement' => 'top',
+						'data-content' => "And here's some amazing content. It's very engaging. right?",
+						'data-toggle' => 'popover'
+				),
+		)
+);
+echo '&nbsp;';
+$this->widget(
+		'bootstrap.widgets.TbButton',
+		array(
+				'label' => 'Left popover',
+				'type' => 'danger',
+				'htmlOptions' => array(
+						'data-title' => 'A Title',
+						'data-placement' => 'left',
+						'data-content' => "And here's some amazing content. It's very engaging. right?",
+						'data-toggle' => 'popover'
+				),
+		)
+);
+echo '&nbsp;';
+$this->widget(
+		'bootstrap.widgets.TbButton',
+		array(
+				'label' => 'Bottom popover',
+				'type' => 'success',
+				'htmlOptions' => array(
+						'data-title' => 'A Title',
+						'data-placement' => 'bottom',
+						'data-content' => "And here's some amazing content. It's very engaging. right?",
+						'data-toggle' => 'popover'
+				),
+		)
+);
+echo '&nbsp;';
+$this->widget(
+		'bootstrap.widgets.TbButton',
+		array(
+				'label' => 'Right popover',
+				'type' => 'warning',
+				'htmlOptions' => array(
+						'data-title' => 'A Title',
+						'data-placement' => 'right',
+						'data-content' => "And here's some amazing content. It's very engaging. right?",
+						'data-toggle' => 'popover'
+				),
+		)
+);
 ?>
 
 <h1>Contact Us</h1>
