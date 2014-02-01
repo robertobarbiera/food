@@ -60,6 +60,7 @@ class User extends CActiveRecord
 			'username' => 'Username',
 			'password' => 'Password',
 			'email' => 'Email',
+			'userCompanies' => Yii::t('gen','companies')
 		);
 	}
 

@@ -37,6 +37,9 @@ class Role extends CActiveRecord
 		);
 	}
 
+	public function getDescriptionLang() {
+		return Yii::t('gen',$this->description);
+	}
 	/**
 	 * @return array relational rules.
 	 */

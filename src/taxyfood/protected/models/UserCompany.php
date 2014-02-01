@@ -40,6 +40,18 @@ class UserCompany extends CActiveRecord
 		);
 	}
 
+	public function getCompanyName() {
+		return $this->company->name;
+	}
+	
+	public function getUniqueId() {
+		return $this->oid_user.'|'.$this->oid_company.'|'.$this->cod_role;
+	}
+	
+	public function getExtendedRole() {
+		return $this->company->name.' ('.$this->role->descriptionLang.')';
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */

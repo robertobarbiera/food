@@ -37,6 +37,12 @@
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 	
+	<div class="row">
+		<?php echo $form->labelEx($model,'userCompanies'); ?>
+		<?php echo $form->listBox($model,'userCompanies',CHtml::listData($model->userCompanies,'uniqueId','extendedRole'),array('size'=>10,'maxlength'=>128)); ?>
+		<?php echo $form->error($model,'userCompanies'); ?>
+	</div>
+		
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

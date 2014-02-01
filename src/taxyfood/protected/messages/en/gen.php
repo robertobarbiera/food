@@ -1,6 +1,8 @@
 <?php
 return array(
 'welcome.msg' => 'Congratulations! You have successfully created your Yii application.',
-'other' => 'Other'
+'companies' => 'Companies',
+'customer' => 'Customer',
+'owner' => 'Owner'
 );
 ?>

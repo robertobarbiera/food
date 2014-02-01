@@ -1,6 +1,8 @@
 <?php
 return array(
 'welcome.msg' => 'Congratulazioni! Hai creato la tua prima applicazione con Yii',
-'other' => 'Altro'
+'companies' => 'Aziende',
+'customer' => 'Cliente',
+'owner' => 'Proprietario'
 );
 ?>
