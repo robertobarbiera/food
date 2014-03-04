@@ -104,6 +104,6 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
 		'defaultLanguage'=>'en',
-		'languages'=>array('it'=>'Italiano', 'en'=>'English', 'de'=>'Deutsch')
+		'languages'=>array('it'=>'Italiano', 'en'=>'English')
 	),
 );

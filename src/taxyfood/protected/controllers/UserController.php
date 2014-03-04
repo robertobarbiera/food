@@ -35,8 +35,8 @@ class UserController extends Controller
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+			array('allow', // allow authenticated user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete','deleteCompany','autocompleteCompany','addCompany'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -86,16 +86,16 @@ class UserController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+		$model=new UserForm;
+		
+		$model->user=$this->loadModel($id);
+		
 		if(isset($_POST['User']))
 		{
-			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->oid));
+			$model->user->attributes=$_POST['User'];
+
+			if($model->user->validate() && $model->user->save())
+				$this->redirect(array('view','id'=>$model->user->oid));
 		}
 
 		$this->render('update',array(
@@ -114,8 +114,84 @@ class UserController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('update'));
 	}
+
+	
+	
+	/**
+	 * Add company and role to a specific user
+	 * @param integer $id the ID of the model to be deleted
+	 */
+	public function actionAddCompany($id)
+	{
+		$model=new UserForm;
+	
+		$model->user=$this->loadModel($id);
+		
+		
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		
+		if(isset($_POST['UserForm']))
+		{
+			$model->attributes=$_POST['UserForm'];
+			$userCompany= new UserCompany();
+			$userCompany->oid_company=$model->company_id;
+			$userCompany->oid_user=$model->user->oid;
+			$userCompany->cod_role='CUSTOMER';
+			
+			if ($model->validate()) 
+			{
+				$userCompany->save();
+				$model->company_id=null;
+				$model->company_name='';
+			}
+		}
+		
+		$this->render('update',array(
+				'model'=>$model,
+		));
+	}
+		
+	public function actionAutocompleteCompany () {
+		if (isset($_GET['term'])) {
+			$criteria=new CDbCriteria;
+			$criteria->alias = "Company";
+			$criteria->condition = "name like '" . $_GET['term'] . "%'";
+	
+			$dataProvider = new CActiveDataProvider(get_class(Company::model()), array(
+					'criteria'=>$criteria,'pagination'=>false,
+			));
+			$companies = $dataProvider->getData();
+	
+			$return_array = array();
+			foreach($companies as $company) {
+				$return_array[] = array(
+						'label'=>$company->name,
+						'value'=>$company->name,
+						'id'=>$company->oid,
+				);
+			}
+	
+			echo CJSON::encode($return_array);
+		}
+	}
+	
+	/**
+	 * Deletes a particular model.
+	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * @param integer $id the ID of the model to be deleted
+	 */
+	public function actionDeleteCompany($id)
+	{
+		$model=UserCompany::model()->findByPk($id);
+		$model->delete();
+		
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}	
 
 	/**
 	 * Lists all models.
@@ -153,10 +229,6 @@ class UserController extends Controller
 	public function loadModel($id)
 	{
 		$model=User::model()->findByPk($id);
-		
-		foreach($model->userCompanies as $userCompany) {
-		      Yii::log($userCompany->role->description,'info','UserController');
-		}
 		
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');

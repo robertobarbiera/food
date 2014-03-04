@@ -92,6 +92,19 @@ class User extends CActiveRecord
 		));
 	}
 
+	public function searchUserCompanies()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+	
+		$criteria=new CDbCriteria;
+	
+		$criteria->compare('oid_user',$this->oid);
+	
+		return new CActiveDataProvider('UserCompany', array(
+				'criteria'=>$criteria,
+		));
+	}
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

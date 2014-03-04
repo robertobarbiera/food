@@ -14,6 +14,9 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/angular.min.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/CompanyCtrl.js"></script>
 	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -32,6 +35,7 @@
 	
 	<?php include("inc/breadcrumbs.php"); ?>
 	
+
 
 	<?php echo $content; ?>
 

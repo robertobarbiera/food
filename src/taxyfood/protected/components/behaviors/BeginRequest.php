@@ -9,7 +9,9 @@ class BeginRequest extends CBehavior {
     public function handleBeginRequest($event) {        
         $app = Yii::app();
         $user = $app->user;
- 
+        $languages = $app->params['languages'];
+        $found=false;
+        
         if (isset($_POST['_lang']))
         {
             $app->language = $_POST['_lang'];
@@ -26,5 +28,17 @@ class BeginRequest extends CBehavior {
         	$app->language=Yii::app()->request->preferredLanguage;
         else	
         	$app->language=$app->params['defaultLanguage'];
+        
+        foreach($languages as $key=>$lang) {
+        	if ($app->language==$key)
+        		$found=true;
+        }        
+        
+        if (!$found)
+        	$app->language=$app->params['defaultLanguage'];
+        
+        
+        //Yii::log('Yii::app()->language='.$app->language,'info','BeginRequest');
+        
     }
 }

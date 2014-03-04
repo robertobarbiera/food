@@ -44,9 +44,9 @@ class UserCompany extends CActiveRecord
 		return $this->company->name;
 	}
 	
-	public function getUniqueId() {
-		return $this->oid_user.'|'.$this->oid_company.'|'.$this->cod_role;
-	}
+	public function getRoleDescription() {
+		return $this->role->descriptionLang;
+	}	
 	
 	public function getExtendedRole() {
 		return $this->company->name.' ('.$this->role->descriptionLang.')';

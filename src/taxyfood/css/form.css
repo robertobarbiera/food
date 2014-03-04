@@ -42,15 +42,26 @@ div.form input,
 div.form textarea,
 div.form select
 {
-	margin: 0.2em 0 0.5em 0;
+	margin: 0em 0 0.5em 0;
+	padding: 2px 2px;
 }
 
 div.form fieldset
 {
-	border: 1px solid #DDD;
-	padding: 10px;
-	margin: 0 0 10px 0;
+    border: 1px solid #999999;
+    margin: 3px 0;
+    padding: 10px;
     -moz-border-radius:7px;
+}
+
+div.form legend {
+    background: none repeat scroll 0 0 #1E5799;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 11px;
+    padding: 2px 4px;
+  	font-weight: bold;
+    text-align: left;    
 }
 
 div.form label
@@ -149,7 +160,6 @@ div.wide.form label
 	margin-right: 10px;
 	position: relative;
 	text-align: right;
-	width: 100px;
 }
 
 div.wide.form .row
