@@ -1,6 +1,6 @@
 <?php /* @var $this Controller */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html  ng-app xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html ng-app="foodApp" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head >
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
@@ -16,7 +16,9 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/angular.min.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/angular-route.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/CompanyCtrl.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/foodApp.js"></script>
 	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -31,11 +33,7 @@
 	<div><!-- mainmenu -->
 		<?php include("inc/menu.php"); ?>
 	</div>
-	
-	
 	<?php include("inc/breadcrumbs.php"); ?>
-	
-
 
 	<?php echo $content; ?>
 
